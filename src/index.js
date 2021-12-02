@@ -1,17 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import reactDom from "react-dom";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import { BrowserRouter as Router } from "react-router-dom";
+import { createGlobalStyle } from "styled-components";
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+import ContainerLogic from "./components/Container/ContainerLogic";
+
+const App = () => {
+  return (
+    <Router>
+      <GlobalStyle />
+      <ContainerLogic />
+    </Router>
+  );
+};
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    height: fit-content;
+    padding-bottom: 40px;
+    background: rgb(4,92,155);
+    background: linear-gradient(90deg, rgba(4,92,155,1) 0%, rgba(248,156,26,1) 70%, rgba(204,219,41,1) 100%);
+  }
+`;
+
+reactDom.render(<App />, document.querySelector("#root"));
